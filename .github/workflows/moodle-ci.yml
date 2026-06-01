@@ -55,7 +55,9 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          # Moodle 5.1 requires Node >=22.11 <23 (package.json engines / .nvmrc lts/jod).
+          # Grunt fatals on the version check otherwise, failing the grunt build step.
+          node-version: '22'
 
       - name: Initialise moodle-plugin-ci
         run: |
