@@ -34,12 +34,27 @@ import {pluginName} from './common';
 const configOptionName = getPluginOptionName(pluginName, 'config');
 
 /**
- * Read the resolved custom configuration from the instance config.
+ * Read the resolved custom configuration.
+ *
+ * Moodle merges the namespaced plugin options into `instanceConfig` only AFTER
+ * every plugin's configure() has run, so at this point the value is not yet on
+ * `instanceConfig`. The raw plugin data is available on the `options` argument
+ * instead, under `options.plugins[pluginName].config` — which is exactly what
+ * PHP returned from get_plugin_configuration_for_context(), i.e. `{config: {...}}`.
  *
  * @param {object} instanceConfig
+ * @param {object} options
  * @returns {object}
  */
-const readCustomConfig = (instanceConfig) => {
+const readCustomConfig = (instanceConfig, options) => {
+    const pluginData = options && options.plugins ? options.plugins[pluginName] : undefined;
+    const fromOptions = pluginData && pluginData.config ? pluginData.config.config : undefined;
+    if (fromOptions && typeof fromOptions === 'object') {
+        return fromOptions;
+    }
+
+    // Defensive fallback: if the namespaced value is already present (e.g. a
+    // future ordering change), read it from instanceConfig.
     const value = instanceConfig ? instanceConfig[configOptionName] : null;
     return (value && typeof value === 'object') ? value : {};
 };
@@ -82,10 +97,11 @@ const transformToolbar = (toolbar, removeButtons, addButtons) => {
  * Return the configuration options to merge into TinyMCE's init.
  *
  * @param {object} instanceConfig The current TinyMCE instance configuration.
+ * @param {object} options The editor options, including per-plugin config data.
  * @returns {object} Options to merge in.
  */
-export const configure = (instanceConfig) => {
-    const custom = readCustomConfig(instanceConfig);
+export const configure = (instanceConfig, options) => {
+    const custom = readCustomConfig(instanceConfig, options);
     const removeButtons = Array.isArray(custom.removeButtons) ? custom.removeButtons : [];
     const addButtons = Array.isArray(custom.addButtons) ? custom.addButtons : [];
     const extra = (custom.extra && typeof custom.extra === 'object') ? custom.extra : {};
