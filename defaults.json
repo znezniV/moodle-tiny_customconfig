@@ -1,0 +1,20 @@
+{
+  "menubar": false,
+  "link_default_target": "_blank",
+  "removeButtons": [
+    "indent",
+    "outdent",
+    "alignleft",
+    "aligncenter",
+    "alignright",
+    "alignjustify",
+    "ltr",
+    "rtl",
+    "fullscreen"
+  ],
+  "addButtons": [
+    "removeformat",
+    "code"
+  ],
+  "extra": {}
+}

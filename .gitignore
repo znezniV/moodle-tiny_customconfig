@@ -1,0 +1,18 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editors / IDEs
+.idea/
+.vscode/
+*.swp
+*~
+
+# Node / build tooling
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Moodle Plugin CI scratch
+moodle/
+ci/
