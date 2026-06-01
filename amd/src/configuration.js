@@ -115,6 +115,7 @@ export const configure = (instanceConfig, options) => {
         result.menubar = custom.menubar;
     }
     if (typeof custom.link_default_target === 'string') {
+        // eslint-disable-next-line camelcase
         result.link_default_target = custom.link_default_target;
     }
 
