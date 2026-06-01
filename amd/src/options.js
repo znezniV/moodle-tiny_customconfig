@@ -17,7 +17,7 @@
  * Option registration for the tiny_customconfig plugin.
  *
  * The resolved configuration is provided by PHP via
- * plugin_with_configuration::get_plugin_configuration_for_external() and is
+ * plugin_with_configuration::get_plugin_configuration_for_context() and is
  * exposed under the namespaced option name below.
  *
  * @module      tiny_customconfig/options

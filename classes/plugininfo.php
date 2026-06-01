@@ -61,7 +61,7 @@ class plugininfo extends plugin implements plugin_with_configuration {
      * @param editor|null $editor The editor instance, if available.
      * @return array Data made available to amd/src/options.js.
      */
-    public static function get_plugin_configuration_for_external(
+    public static function get_plugin_configuration_for_context(
         context $context,
         array $options,
         array $fpoptions,
