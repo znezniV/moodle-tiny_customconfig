@@ -24,10 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Custom TinyMCE Configuration';
-
-// Settings.
-$string['settings'] = 'Custom configuration';
 $string['config'] = 'Editor configuration (JSON)';
 $string['config_desc'] = 'JSON object that customises the TinyMCE editor. Supported keys:
 <ul>
@@ -39,6 +35,6 @@ $string['config_desc'] = 'JSON object that customises the TinyMCE editor. Suppor
 </ul>
 Button names come from Moodle\'s <code>tiny_*</code> plugins, not raw TinyMCE. If the value is empty or invalid, the bundled defaults are used.';
 $string['config_invalid'] = 'The custom configuration is not valid JSON. The bundled defaults are being used instead.';
-
-// Privacy.
+$string['pluginname'] = 'Custom TinyMCE Configuration';
 $string['privacy:metadata'] = 'The Custom TinyMCE Configuration plugin does not store any personal data.';
+$string['settings'] = 'Custom configuration';
