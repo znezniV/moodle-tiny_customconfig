@@ -28,7 +28,6 @@ namespace tiny_customconfig;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class config_resolver {
-
     /** @var string[] Whitelisted keys allowed inside the `extra` pass-through object. */
     private const EXTRA_WHITELIST = [
         'toolbar_mode',
